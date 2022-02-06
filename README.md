@@ -1,6 +1,6 @@
 # MMA-Bout-Model
 
-Tracking mixed martial arts competitions and betting activity to identify optimal trading strategies. 
+Tracking mixed martial arts competitions and betting activity to identify optimal trading strategies. Take a statistical and automated approach to placing wagers on weekly events in an effort to maximize returns and minimize human engagement with detailed analysis. 
 
 ## Programming Languages 
 
@@ -21,4 +21,8 @@ Variables:
 * Total fights 
 * Previous fight result
 * Days since last fight 
+* Has been KOed?
+* Has been submitted?
+* Total fight time
+* Total fight time in last fight
 
