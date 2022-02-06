@@ -1,6 +1,6 @@
 # MMA-Bout-Model
 
-Tracking mixed martial arts competition and betting activity to identify profitable trading strategies. 
+Tracking mixed martial arts competitions and betting activity to identify optimal trading strategies. 
 
 ## Programming Languages 
 
