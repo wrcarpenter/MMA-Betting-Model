@@ -14,9 +14,11 @@ Tapology contains the most granular data and also links BestFightOdds and UFC st
 
 ## Attributes 
 
-Fighter Age
-Fighter height 
-Fighter reach 
-Total fights 
-Previous fight result 
-Days since last fight 
+Variables:
+* Fighter Age
+* Fighter height 
+* Fighter reach 
+* Total fights 
+* Previous fight result
+* Days since last fight 
+
