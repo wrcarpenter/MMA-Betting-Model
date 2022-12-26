@@ -2,6 +2,14 @@
 
 Tracking mixed martial arts competitions and betting activity to identify optimal trading strategies. Take a statistical and automated approach to placing wagers on weekly events in an effort to maximize returns and minimize human engagement with detailed analysis. 
 
+## Inspiration
+
+Bill Benter, a successful horse gambler active mostly in the 1990s in Hong Kong. 
+
+## Objective
+
+Create a handicapping method that delivers supierior, and uncorrelated, returns to the market overtime (ex: SP 500, 10y Treasury, Nasdaq). 
+
 ## Programming Languages 
 
 Python (scraping, cleaning), Stata (regression analysis, cleaning). Use Beautifulsoup or Selenium for web-scraping. Concurrency can help speed up scraping data.
