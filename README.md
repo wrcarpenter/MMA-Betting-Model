@@ -44,3 +44,9 @@ Variables:
 * Total fight time
 * Total fight time in last fight
 
+UFC Specific:
+* Total strikes thrown
+* Significant strike % accuracy
+* Knowdown accuracy
+* Takedown accuracy
+
