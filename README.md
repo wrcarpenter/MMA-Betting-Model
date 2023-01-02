@@ -12,7 +12,7 @@ Create a handicapping method that delivers supierior, and uncorrelated, returns 
 
 ## Programming Languages 
 
-Python (scraping, cleaning), Stata (regression analysis, cleaning). Use Beautifulsoup or Selenium for web-scraping. Concurrency can help speed up scraping data.
+Python (scraping, cleaning), Python/R (regression analysis, cleaning). Beautifulsoup for web-scraping. Concurrency can help speed up scraping data.
 
 ## Data Sources
 
