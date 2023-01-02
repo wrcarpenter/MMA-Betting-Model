@@ -1,3 +1,9 @@
+## Current Process
+
+Build robust dataset (updated periodically) and model for UFC Stats data. Use this model for betting strategies. Try to add odds data to prediction strength.
+
+If interesting/successful, add Tapology data. Otherwise, finalize project. 
+
 ## Current Errata
 
 Initialize variables to avoid repeats with blank data. 
