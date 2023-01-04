@@ -1,0 +1,16 @@
+import requests
+import csv 
+import re
+from bs4 import BeautifulSoup
+import pandas as pd
+import numpy as np
+import time
+from google.colab import files
+import datetime
+from datetime import date
+from pytz import timezone
+eastern = timezone('US/Eastern')
+import threading 
+from concurrent.futures import ThreadPoolExecutor
+import multiprocessing
+cores = multiprocessing.cpu_count()
