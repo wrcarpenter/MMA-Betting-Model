@@ -1,3 +1,20 @@
+## Key Variables
+
+Key variables:
+* Height
+* Reach
+* Weight class
+* Age at time of fight
+* Time since last fight
+* Average time between fights (for this fighter) vs overall average time for all fighters? 
+* Total Fights
+* Total Fight Time
+* Overall record 
+* Result of last fight
+* Result of second to last fight
+* Ever been KOed?
+* Ever been submitted?
+
 ## Current Process
 
 Build robust dataset (updated periodically) and model for UFC Stats data. Use this model for betting strategies. Try to add odds data to prediction strength.
