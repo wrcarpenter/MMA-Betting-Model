@@ -10,6 +10,13 @@ Initialize variables to avoid repeats with blank data.
 
 Record strikes/takedowns/etc. just to have that data in case of future applicability. 
 
+Important Missing Data:
+* Birthday
+* Reach
+* Height
+* Stance (switch, southpaw, orthodox, other, none)
+* Style? (BJJ, wrestling, striker, etc.) 
+
 ## Data Update Process
 
 Update all past and upcoming events. Get information on number of completed fights. 
