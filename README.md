@@ -30,6 +30,17 @@ Main focus questions:
 * What is the best model choice for predicting fight outcomes?
 * Can I create a specifc ELO system that seems to reflect other MMA ranking systems well? 
 
+## Betting Sites
+
+* FanDuel (NY)
+* BetMGM  (NY)
+* Caesars   (NY)
+* WynnBET   (NY)
+* BetRivers  (NY)  
+* DraftKings (NY)
+* PointsBet (NY)
+
+
 ## Attributes 
 
 Variables:
