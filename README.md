@@ -4,7 +4,7 @@ Tracking mixed martial arts competitions and betting activity to identify optima
 
 ## Inspiration
 
-Bill Benter, a successful horse gambler active mostly in the 1990s in Hong Kong. 
+[Bill Benter](https://www.casino.org/blog/bill-benter/), a successful horse gambler active mostly in the 1990s in Hong Kong. 
 
 ## Objective
 
