@@ -19,7 +19,15 @@ Key variables:
 
 Build robust dataset (updated periodically) and model for UFC Stats data. Use this model for betting strategies. Try to add odds data to prediction strength.
 
-If interesting/successful, add Tapology data. Otherwise, finalize project. 
+If interesting/successful, add Tapology data. Otherwise, finalize project.
+
+Steps:
+* Run a robust scraper for all of UFC stats to get historical data (only need to do this once in theory)
+* Run a program to add new data peroidically to the master dataset
+* Run a cleaner program to generate all relevant variables (this can be constantly updated)
+* Run a description program to provide useful insights and stats on the data 
+* Run a model file to generate simulations and predictions for fights 
+** use the file to place bets / record the bets in Excel or something and the results 
 
 ## Current Errata
 
