@@ -1,3 +1,11 @@
+## Code Descriptions 
+
+MMA Bout Scraper -> Fundamental Scraper for UFC stats. Creates the initial dataset that can be updated periodically with new fights.
+MMA Bout Update  -> Running the scraper over UFC stats to update the dataset. 
+MMA Bout Dataset -> Create the clean/usable dataset from the raw scraped data. Also works to combine in odds data from BestFightOdds.
+MMM Bout Simulations -> Evaluate different betting strategies. 
+MMA Bout Model -> Generate a model to predict fights. 
+
 ## Key Variables
 
 Key variables:
@@ -14,6 +22,7 @@ Key variables:
 * Result of second to last fight
 * Ever been KOed?
 * Ever been submitted?
+
 
 ## Current Process
 
