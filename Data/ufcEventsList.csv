@@ -1,4 +1,5 @@
 ,eventLink,eventName,eventDateString,eventLocation,eventListedFights,date,upcoming
+642,http://ufcstats.com/event-details/6fb1ba67bef41b37,UFC Fight Night: Pavlovich vs. Blaydes,April 22 2023,"Las Vegas, Nevada, USA",0,2023-04-22,1
 641,http://ufcstats.com/event-details/15b1b21cd743d652,UFC Fight Night: Holloway vs. Allen,April 15 2023,"Kansas City, Missouri, USA",0,2023-04-15,1
 640,http://ufcstats.com/event-details/3dc3022232b79c7a,UFC 287: Pereira vs. Adesanya 2,April 08 2023,"Miami, Florida, USA",0,2023-04-08,1
 639,http://ufcstats.com/event-details/aec273fcb765330d,UFC Fight Night: Vera vs. Sandhagen,March 25 2023,"San Antonio, Texas, USA",0,2023-03-25,1
@@ -263,8 +264,8 @@
 256,http://ufcstats.com/event-details/7139cd2ae4bf6a29,UFC Fight Night: Lewis vs. Abdurakhimov,December 09 2016,"Albany, New York, USA",12,2016-12-09,0
 257,http://ufcstats.com/event-details/bd4389b71fdc0ce2,The Ultimate Fighter: Tournament of Champions Finale,December 03 2016,"Las Vegas, Nevada, USA",12,2016-12-03,0
 258,http://ufcstats.com/event-details/73e09f837f3b5ecc,UFC Fight Night: Whittaker vs. Brunson,November 26 2016,"Melbourne, Victoria, Australia",13,2016-11-26,0
-259,http://ufcstats.com/event-details/5cde96e0a1a1fffe,UFC Fight Night: Bader vs. Nogueira,November 19 2016,"Sao Paulo, Sao Paulo, Brazil",13,2016-11-19,0
 260,http://ufcstats.com/event-details/6810d8d2dd557cf9,UFC Fight Night: Mousasi vs. Hall 2,November 19 2016,"Belfast, Northern Ireland, United Kingdom",13,2016-11-19,0
+259,http://ufcstats.com/event-details/5cde96e0a1a1fffe,UFC Fight Night: Bader vs. Nogueira,November 19 2016,"Sao Paulo, Sao Paulo, Brazil",13,2016-11-19,0
 261,http://ufcstats.com/event-details/4956f60b7fa57c1a,UFC 205: Alvarez vs McGregor,November 12 2016,"New York City, New York, USA",12,2016-11-12,0
 262,http://ufcstats.com/event-details/6083f497c22cc075,UFC Fight Night: Dos Anjos vs. Ferguson,November 05 2016,"Mexico City, Distrito Federal, Mexico",13,2016-11-05,0
 263,http://ufcstats.com/event-details/154a6b3ffae264cd,UFC 204: Bisping vs. Henderson,October 08 2016,"Manchester, England, United Kingdom",11,2016-10-08,0
@@ -348,8 +349,8 @@
 341,http://ufcstats.com/event-details/6ca68b636fbc1f18,UFC Fight Night 56: Shogun vs Saint Preux,November 08 2014,"Uberlandia, Minas Gerais, Brazil",10,2014-11-08,0
 342,http://ufcstats.com/event-details/371a1c91b24dec2b,UFC Fight Night: Rockhold vs Bisping,November 07 2014,"Sydney, New South Wales, Australia",11,2014-11-07,0
 343,http://ufcstats.com/event-details/53f02bbc41d99432,UFC 179: Aldo vs Mendes 2,October 25 2014,"Rio de Janeiro, Brazil",11,2014-10-25,0
-344,http://ufcstats.com/event-details/0313bf497de9c470,UFC Fight Night: MacDonald vs Saffiedine,October 04 2014,"Halifax, Nova Scotia, Canada",13,2014-10-04,0
 345,http://ufcstats.com/event-details/8dc4f34c1f50d00d,UFC Fight Night: Nelson vs Story,October 04 2014,"Stockholm, Sweden",11,2014-10-04,0
+344,http://ufcstats.com/event-details/0313bf497de9c470,UFC Fight Night: MacDonald vs Saffiedine,October 04 2014,"Halifax, Nova Scotia, Canada",13,2014-10-04,0
 346,http://ufcstats.com/event-details/3bb030257966b022,UFC 178: Johnson vs Cariaso,September 27 2014,"Las Vegas, Nevada, USA",11,2014-09-27,0
 347,http://ufcstats.com/event-details/2dea80c069847321,UFC Fight Night: Hunt vs Nelson,September 20 2014,"Saitama, Japan",12,2014-09-20,0
 348,http://ufcstats.com/event-details/a71feb7ea7592a71,UFC Fight Night: Bigfoot vs Arlovski,September 13 2014,"Brasilia, Distrito Federal, Brazil",11,2014-09-13,0
