@@ -1,14 +1,25 @@
 ## Code Descriptions 
 
-MMA Bout Scraper -> Fundamental Scraper for UFC stats. Creates the initial dataset that can be updated periodically with new fights.
+|Name | File | Description | 
+| --- | --- | --- | 
+| UFC Bout Scraper | MMA_Bout_Scraper.py | Fundamental scraping algorithm used to extract information from ufcstats.com |
+| UFC Bout Update  | UFC_Bout_Scraper.py | Updating bout dataset with newly completed events and added pipeline |
+| MMA Bout Cleaning | Bouts_data_cleaning.py | Generating a granular dataset of fight statistics from raw data collected from ufcstats.com |
+| UFC Event Scraper | UFC_Event_Scraper.py | Scraping algorithm to generate a list of all completed UFC events from ufcstats.com |
 
-MMA Bout Update  -> Running the scraper over UFC stats to update the dataset. 
+## Current Process
 
-MMA Bout Dataset -> Create the clean/usable dataset from the raw scraped data. Also works to combine in odds data from BestFightOdds.
+Build robust dataset (updated periodically) and model for UFC Stats data. Use this model for betting strategies. Try to add odds data to prediction strength.
 
-MMM Bout Simulations -> Evaluate different betting strategies. 
+If interesting/successful, add Tapology data. Otherwise, finalize project.
 
-MMA Bout Model -> Generate a model to predict fights. 
+Steps:
+* Run a robust scraper for all of UFC stats to get historical data (only need to do this once in theory)
+* Run a program to add new data peroidically to the master dataset
+* Run a cleaner program to generate all relevant variables (this can be constantly updated)
+* Run a description program to provide useful insights and stats on the data 
+* Run a model file to generate simulations and predictions for fights 
+** use the file to place bets / record the bets in Excel or something and the results
 
 ## Key Variables
 
@@ -27,22 +38,7 @@ Key variables:
 * Ever been KOed?
 * Ever been submitted?
 
-
-## Current Process
-
-Build robust dataset (updated periodically) and model for UFC Stats data. Use this model for betting strategies. Try to add odds data to prediction strength.
-
-If interesting/successful, add Tapology data. Otherwise, finalize project.
-
-Steps:
-* Run a robust scraper for all of UFC stats to get historical data (only need to do this once in theory)
-* Run a program to add new data peroidically to the master dataset
-* Run a cleaner program to generate all relevant variables (this can be constantly updated)
-* Run a description program to provide useful insights and stats on the data 
-* Run a model file to generate simulations and predictions for fights 
-** use the file to place bets / record the bets in Excel or something and the results 
-
-## Current Errata
+## Errata
 
 Initialize variables to avoid repeats with blank data. 
 
