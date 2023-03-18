@@ -40,20 +40,19 @@ Main focus questions:
 * DraftKings (NY)
 * PointsBet (NY)
 
-
 ## Attributes 
 
 Variables:
-* Fighter Age
-* Fighter height 
-* Fighter reach 
-* Total fights 
-* Previous fight result
-* Days since last fight 
-* Has been KOed?
-* Has been submitted?
-* Total fight time
-* Total fight time in last fight
+* Fighter Age (at each event fight)
+* Fighter height (constant)
+* Fighter reach  (constant)
+* Total fights   (before current fight)
+* Previous fight result (need categorical variables)
+* Days since last fight (or weeks, doens't matter that much)
+* Has been KOed?  (over given history)
+* Has been submitted? (over given history)
+* Total fight time (this will be tricky)
+* Total fight time in last fight (this should be manageable)
 
 UFC Specific:
 * Total strikes thrown
