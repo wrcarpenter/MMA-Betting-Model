@@ -1,14 +1,14 @@
-# MMA-Bout-Model
+# MMA Handicapping Model
 
 Tracking mixed martial arts competitions and betting activity to identify optimal trading strategies. Take a statistical and automated approach to placing wagers on weekly events in an effort to maximize returns and minimize human engagement with detailed analysis. 
-
-## Inspiration
-
-[Bill Benter](https://www.casino.org/blog/bill-benter/), a successful horse gambler active mostly in the 1990s in Hong Kong. 
 
 ## Objective
 
 Create a handicapping method that delivers supierior, and uncorrelated, returns to the market overtime (ex: SP 500, 10y Treasury, Nasdaq). 
+
+## Inspiration
+
+[Bill Benter](https://www.casino.org/blog/bill-benter/), a successful horse gambler active mostly in the 1990s in Hong Kong. 
 
 ## Programming Languages 
 
