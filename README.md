@@ -10,7 +10,7 @@ Create a handicapping method that delivers supierior, and uncorrelated, returns 
 
 ## Inspiration
 
-[Bill Benter](https://www.casino.org/blog/bill-benter/), a successful horse gambler active mostly in the 1990s in Hong Kong. 
+[Bill Benter](https://www.casino.org/blog/bill-benter/), a successful horse gambler active mostly during the 1990s in Hong Kong. 
 
 ## Programming Languages 
 
