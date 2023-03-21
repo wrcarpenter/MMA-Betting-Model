@@ -1,5 +1,7 @@
 # MMA Handicapping Model
 
+> "Slow is smooth, smooth is fast" - Conor Mcgregor
+
 Tracking mixed martial arts competitions and betting activity to identify optimal trading strategies. Take a statistical and automated approach to placing wagers on weekly events in an effort to maximize returns and minimize human engagement with detailed analysis. 
 
 ## Objective
