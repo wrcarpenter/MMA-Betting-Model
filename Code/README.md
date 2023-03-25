@@ -4,7 +4,7 @@
 | --- | --- | --- | 
 | UFC Bout Scraper | MMA_Bout_Scraper.py | Fundamental scraping algorithm used to extract information from ufcstats.com |
 | UFC Bout Update  | UFC_Bout_Scraper.py | Updating bout dataset with newly completed events and added pipeline |
-| MMA Bout Cleaning | Bouts_data_cleaning.py | Generating a granular dataset of fight statistics from raw data collected from ufcstats.com |
+| MMA Bout Cleaning | Bouts_data_cleaning.py | Generating a dataset of fight statistics from original data collected from ufcstats.com |
 | UFC Event Scraper | UFC_Event_Scraper.py | Scraping algorithm to generate a list of all completed UFC events from ufcstats.com |
 
 ## Current Process
