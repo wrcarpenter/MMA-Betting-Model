@@ -1,3 +1,5 @@
+![Screenshot](https://github.com/wrcarpenter/MMA-Handicapping-Model/blob/main/Project-Image.jpg)
+
 # MMA Handicapping Model
 
 > "Slow is smooth, smooth is fast" - Conor Mcgregor
