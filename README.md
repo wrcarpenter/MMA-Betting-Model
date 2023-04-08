@@ -10,9 +10,11 @@ Tracking mixed martial arts competitions and betting activity to identify optima
 
 Create a handicapping method that delivers supierior, and uncorrelated, returns to the market overtime (ex: SP 500, 10y Treasury, Nasdaq). 
 
-## Inspiration
+## Inspiration(s)
 
-[Bill Benter](https://www.casino.org/blog/bill-benter/), a successful horse gambler active mostly during the 1990s in Hong Kong. 
+[Bill Benter](https://www.casino.org/blog/bill-benter/), a successful horse gambler active mostly during the 1990s in Hong Kong.
+
+Bill Walters, a renowned sports gambler. 
 
 ## Programming Languages 
 
