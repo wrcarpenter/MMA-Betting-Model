@@ -16,7 +16,7 @@ import pandas as pd
 import numpy as np
 import time
 # from google.colab import files
-import datetime
+import datetime as datetime
 from datetime import date
 from pytz import timezone
 eastern = timezone('US/Eastern')
@@ -27,12 +27,13 @@ cores = multiprocessing.cpu_count()
 
 #%%
 # Upload most recent working version of bout data 
-source = 'https://raw.githubusercontent.com/wrcarpenter/MMA-Handicapping-Model/main/Data/ufcBouts_v9.csv'  
+source = 'https://raw.githubusercontent.com/wrcarpenter/MMA-Handicapping-Model/main/Data/ufcBouts_v11.csv'  
 df      = pd.read_csv(source, header=0) 
 df_orig = df # preserve a copy in case
 del source
 
 #%%
+
 # Explore the dataset 
 print(df.columns)
 # Columns in dataset 
@@ -45,9 +46,11 @@ print("Total Fights Recorded: ", len(df))
 print("Number of Unique Fights: ", len(pd.unique(df['fight_link'])))
 
 #%%
+
 # Eliminate any missing DOB (can fill this in later)
 df = df[df['dob'] != "--"]  # drops missing birthdays from the data 
 print(len(df) - len(df_orig))  # drops 865 obs currently
+
 # Sort dob
 df['dob'] = df['dob'].replace(',', '', regex=True)  # replace commas
 df['dob'] = df['dob'].replace('--', '', regex=True)  # replace commas
@@ -55,10 +58,15 @@ df['dob'] = pd.to_datetime(df['dob'], format="%m/%d/%Y")
 # Sort event date
 df['event_date'] = df['event_date'].replace(',', '', regex=True)  # replace commas 
 df['event_date'] = pd.to_datetime(df['event_date'], format="%m/%d/%Y")
+
 # Sorts in new data 
 df = df.sort_values(by=['fighter_profile', 'event_date'], ascending=True)
 # Show results
 # df.loc[df['name'] == 'Jon Jones', ['event_date', 'event', 'total_fights']]
+
+# Define the upcoming fights to apply model to 
+df['upcoming'] = np.where(df['fighter_result'] == "-" ,1, 0)
+
  
 #%%
 
@@ -76,7 +84,7 @@ df['wks_since_last_fight'] = df.groupby(['fighter_profile'])['event_date'].diff(
 df['wks_since_last_fight'] = df['wks_since_last_fight'] / np.timedelta64(1, 'W')   # this includes some NaN
 
 # Years since first recorded fight 
-df['min_date']    = df.groupby(['fighter_profile'])['event_date'].min()
+df['min_date']    = df.groupby(['fighter_profile'])['event_date'].transform('min')
 df['roster_time'] = (df['event_date'] - df['min_date']) / np.timedelta64(1, 'Y')
  
 #%% 
@@ -102,6 +110,8 @@ df['dec_win'] = np.where(((df['dec'] == 1) & (df['win'] == 1 )), 1, 0)
 
 # Total number of wins so far on roster
 df['total_wins'] = df.groupby(['fighter_profile'])['win'].cumsum()-1
+# and then change all -1 to 0 
+
 
 # height,weight
 # result of last fight (define categorical variables, ko_loss, ko_win, etc. )
@@ -163,13 +173,25 @@ df = df.drop(columns=['-'])
 # Helper variable for fighters 
 # missing birthdays is creating issues here 
 
-
 df['order'] = df.groupby(['fight_link'])['ones'].cumsum()
 df = df.sort_values(by=['fight_link', 'order'], ascending=False)
 df['drop'] = df.groupby(['fight_link'])['order'].cumsum()
 # Dropping all single fight observations from dataset - these cannot be paired
 df = df[df['drop'] != 1]
 df = df.sort_values(by=['fight_link', 'order'], ascending=True)
+
+df['test'] = np.where(df['order'] == 1, 'one', 'zero')
+
+# Mapping opponent variables to a given fight
+df['opp_age']    = np.where(df['order'] == 1, df['age'].shift(-1), df['age'].shift(1))
+df['opp_height'] = np.where(df['order'] == 1, df['height'].shift(-1), df['height'].shift(1))
+df['opp_reach'] = np.where(df['order'] == 1, df['reach'].shift(-1), df['reach'].shift(1))
+df['opp_stance'] = np.where(df['order'] == 1, df['stance'].shift(-1), df['stance'].shift(1))
+
+
+
+
+df.to_excel('Downloads/ufcModel.xlsx')
 
 
 
@@ -186,8 +208,8 @@ df_browse = df[browse_columns]
 
 
 # Need these variables 
-opp_age 
-opp_height
+df['opp_age'] = '-' 
+opp_height['opp_height'] = '-'
 opp_reach
 opp_prev_fight
 opp_win_streak
@@ -200,10 +222,13 @@ etc
 # Save down dataset 
 # df.to_csv('/content/drive/MyDrive/MMA Model/Data/ufcBouts_v6.csv')
 
+
 #%%
 
 
-# Create a unique model dataset! 
+
+
+# Create a unique model dataset 
 df_model = df.sample(frac=1).drop_duplicates(subset=['fight_link'])
 df = df.drop_duplicates(subset='fighter_profile')
 
@@ -219,7 +244,7 @@ print("Total Fights Recorded: ", len(df_model))
 # Number of unique fights in the dataset 
 print("Number of Unique Fights: ", len(pd.unique(df['fight_link'])))
 
-df_model.to_csv('C:/Users/wcarp/OneDrive/Desktop/ufcBouts_v6.csv')
+df_model.to_excel('C:/Users/wcarp/OneDrive/Desktop/ufcBouts_v6.csv')
 
 # Model dataset is then split into two parts (training and upcoming)
 
