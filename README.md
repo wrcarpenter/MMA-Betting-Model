@@ -8,7 +8,9 @@ Tracking mixed martial arts competitions and betting activity to identify optima
 
 ## Objective
 
-Create a handicapping method that delivers supierior, and uncorrelated, returns to the market overtime (ex: SP 500, 10y Treasury, Nasdaq). 
+Create a handicapping method that delivers supierior, and uncorrelated, returns to the market overtime (ex: SP 500, 10y Treasury, Nasdaq).
+
+Apply an ELO ranking system to various fighters and evaluate if that improves predictions. 
 
 ## Inspiration(s)
 
