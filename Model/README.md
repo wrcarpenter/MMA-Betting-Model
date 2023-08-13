@@ -1,6 +1,8 @@
-## Model Approach
+## Current Model
 
-Build a 'model' via logistic regression on a strong sample of data. Modify variables and inputs to get better fit. 
+Model Build 1.01
+
+Simple model via logistic regression on a strong sample of data. 
 
 Test the model on an "out-of-sample" dataset to evaluate performance. This sample could be UFC or it could be Bellator too. 
 
