@@ -14,9 +14,13 @@ Create a betting strategy that outperforms generic approaches (random chance, bo
 
 [Bill Benter](https://www.casino.org/blog/bill-benter/), a successful horse gambler active mostly during the 1990s in Hong Kong that one of the first to popularize quantitative betting models in a sports context.
 
-## Data Sources
+## Data Sources 
 
-UFC Stats, BestFightOdds, Tapology.
+|Name | Link | Description | 
+| --- | --- | --- | 
+| UFC Stats | [ufcstats.com](http://ufcstats.com/statistics/events/completed) | Historical UFC fight data and roster |
+| Tapology  | [tapology.com](https://www.tapology.com/) | Comprehensive event and figter data across numerous MMA venues |
+| Best Fight Odds | [bestfightodds.com](https://www.bestfightodds.com/) | Historical odds for MMA events from a variety of sportsbook platforms |
 
 ## Questions
 A few main focus questions:
