@@ -8,28 +8,18 @@ Tracking mixed martial arts competitions and betting activity to identify optima
 
 ## Objective
 
-Create a handicapping method that delivers supierior, and uncorrelated, returns to the market overtime (ex: SP 500, 10y Treasury, Nasdaq).
-
-Apply an ELO ranking system to various fighters and evaluate if that improves predictions. 
+Create a betting strategy that outperforms generic approaches (random chance, bookmaker odds, etc) and delivers supierior, and uncorrelated, returns to th broader markests.
 
 ## Inspiration(s)
 
-[Bill Benter](https://www.casino.org/blog/bill-benter/), a successful horse gambler active mostly during the 1990s in Hong Kong.
-
-Bill Walters, a renowned sports gambler. 
-
-## Programming Languages 
-
-Python (scraping, cleaning), Python/R (regression analysis, cleaning). Beautifulsoup for web-scraping. Concurrency can help speed up scraping data.
+[Bill Benter](https://www.casino.org/blog/bill-benter/), a successful horse gambler active mostly during the 1990s in Hong Kong that one of the first to popularize quantitative betting models in a sports context.
 
 ## Data Sources
 
 UFC Stats, BestFightOdds, Tapology.
 
-Tapology contains the most granular data and also links BestFightOdds and UFC stats, which is extremely useful from a programming perspective. 
-
 ## Questions
-Main focus questions:
+A few main focus questions:
 * What are the main fighter characterics that influence win/lose probability?
 * How random are fight outcomes?
 * Can public odds markets accurately predict fight outcomes? 
@@ -40,31 +30,5 @@ Main focus questions:
 
 ## Betting Sites
 
-* FanDuel (NY)
-* BetMGM  (NY)
-* Caesars   (NY)
-* WynnBET   (NY)
-* BetRivers  (NY)  
-* DraftKings (NY)
-* PointsBet (NY)
-
-## Attributes 
-
-Variables:
-* Fighter Age (at each event fight)
-* Fighter height (constant)
-* Fighter reach  (constant)
-* Total fights   (before current fight)
-* Previous fight result (need categorical variables)
-* Days since last fight (or weeks, doens't matter that much)
-* Has been KOed?  (over given history)
-* Has been submitted? (over given history)
-* Total fight time (this will be tricky)
-* Total fight time in last fight (this should be manageable)
-
-UFC Specific:
-* Total strikes thrown
-* Significant strike % accuracy
-* Knowdown accuracy
-* Takedown accuracy
+* FanDuel (NY), BetMGM  (NY), Caesars   (NY), WynnBET   (NY), BetRivers  (NY), DraftKings (NY), PointsBet (NY)
 
