@@ -8,7 +8,7 @@ Tracking mixed martial arts competitions and betting activity to identify optima
 
 ## Objective
 
-Create a betting strategy that outperforms generic approaches (random chance, bookmaker odds, etc) and delivers supierior, and uncorrelated, returns to th broader markests.
+Create a betting strategy that outperforms generic approaches (random chance, bookmaker odds, etc) and delivers supierior, and uncorrelated, returns to the broader markests.
 
 ## Inspiration(s)
 
