@@ -75,6 +75,20 @@ df_fighters.to_csv('C:/Users/wcarp/OneDrive/Desktop/MMA Bout  Model/Data/odds-fi
 df_events.to_csv('C:/Users/wcarp/OneDrive/Desktop/MMA Bout  Model/Data/odds-event-links.csv')
 
 #%%
+# Testing link 
+ex = 'https://www.bestfightodds.com/fighters/Israel-Adesanya-7845'
+
+# for each row:
+# get the event name, link, date, fighter name, fighter link 
+# get open, closing range, movement    
+# keep the future events...but probably not that useful 
+# fighter of focus is always first line 
+
+
+
+
+#%% 
+
 # References 
 # https://selenium-python.readthedocs.io/locating-elements.html
 
