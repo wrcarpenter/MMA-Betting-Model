@@ -37,7 +37,7 @@ fighter_list = df['link'].values.tolist()
 
 #%%
 # Aquire new fight links
-updated_list = fighter_list
+new_links = []
 len(fighter_list)
 counter = 0 
       
@@ -53,17 +53,19 @@ for link in fighter_list:
     soup        = BeautifulSoup(page_source, 'lxml')
     links       = soup.find_all("a")
     url_string  = 'https://www.bestfightodds.com'
-    
+        
     for i in links:
         pagelink = str(i.get('href'))
         to_app   = url_string + pagelink
     
         if '/fighters/' in to_app:
-            if to_app not in updated_list:
-                updated_list.append(to_app)
-        else:
-            continue
-        
+            new_links.append(to_app)
+    
+for link in new_links:
+    if link not in fighter_list:
+        fighter_list.append(link)
+
+            
 #%%
 # Export to excel
 df_fighters = pd.DataFrame(fighter_list, columns = ['link'])
