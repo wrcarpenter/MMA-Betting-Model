@@ -36,10 +36,16 @@ del source
 fighter_list = df['link'].values.tolist()
 
 #%%
-# Aquire new fight links      
+# Aquire new fight links
+updated_list = fighter_list
+len(fighter_list)
+counter = 0 
+      
 for link in fighter_list: 
-        
+    
+    counter += 1    
     print("Parsing:  ", link)
+    print(counter)
     print(" ")
     
     driver.get(link)
@@ -53,8 +59,10 @@ for link in fighter_list:
         to_app   = url_string + pagelink
     
         if '/fighters/' in to_app:
-            if to_app not in fighter_list:
-                fighter_list.append(to_app)
+            if to_app not in updated_list:
+                updated_list.append(to_app)
+        else:
+            continue
         
 #%%
 # Export to excel
