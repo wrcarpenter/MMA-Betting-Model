@@ -87,23 +87,39 @@ soup        = BeautifulSoup(page_source, 'lxml')
 events      = soup.find_all('a')
 table       = soup.findAll('table')
 
-for row in table:
-    name     = row.find_all('th')   # but do not include "Matchup", etc. 
-    row_data = row.find_all('td')
+# empty list
+# name, name link, open, closing range, movement, event name, event link, event date 
+
+page_table = []
+
+for row in table: 
+    links  = row.find_all('a')  # contains links, names, and event names
+    mline  = row.find_all('td', {'class' : "moneyline"}) # find moneylines
+    move   = row.find_all('td', {'class' : "change-cell"})
+    event  = row.find_all('tr', {'class' : "event-header item-mobile-only-row" }) # need to strip out event date (important)
     
     # name, name link, open, closing range, movement, event name, event link, event date
     # Map with name, event date
     
-    for data in name:
+    for data in event:
         print("------------------------")
         print(data.text.strip())
     
-    for data in row_data:
+    for data in links:
+        print("------------------------")
+        print(str(data.get('href')))
+        print(data.text.strip())
+    
+    for data in mline:
         print("------------------------")
         print(data.text.strip())
-
-for r in rows:
-    name = r.findAll('')
+    
+    for data in move:
+        print("------------------------")
+        mstring = data.text.strip()
+        mstring = mstring.replace("▲", '')
+        mstring = mstring.replace('▼', '')
+        print(mstring)
 
 # for each row:
 # get the event name, link, date, fighter name, fighter link 
