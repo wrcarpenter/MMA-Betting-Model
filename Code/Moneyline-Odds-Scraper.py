@@ -76,7 +76,34 @@ df_events.to_csv('C:/Users/wcarp/OneDrive/Desktop/MMA Bout  Model/Data/odds-even
 
 #%%
 # Testing link 
+
+# https://www.bestfightodds.com/fighters/Wilson-Reis-710
 ex = 'https://www.bestfightodds.com/fighters/Israel-Adesanya-7845'
+ex = 'https://www.bestfightodds.com/fighters/Chris-Manuel-568'
+
+driver.get(ex)
+page_source = driver.page_source
+soup        = BeautifulSoup(page_source, 'lxml')
+events      = soup.find_all('a')
+table       = soup.findAll('table')
+
+for row in table:
+    name     = row.find_all('th')   # but do not include "Matchup", etc. 
+    row_data = row.find_all('td')
+    
+    # name, name link, open, closing range, movement, event name, event link, event date
+    # Map with name, event date
+    
+    for data in name:
+        print("------------------------")
+        print(data.text.strip())
+    
+    for data in row_data:
+        print("------------------------")
+        print(data.text.strip())
+
+for r in rows:
+    name = r.findAll('')
 
 # for each row:
 # get the event name, link, date, fighter name, fighter link 
@@ -84,11 +111,7 @@ ex = 'https://www.bestfightodds.com/fighters/Israel-Adesanya-7845'
 # keep the future events...but probably not that useful 
 # fighter of focus is always first line 
 
-
-
-
 #%% 
-
 # References 
 # https://selenium-python.readthedocs.io/locating-elements.html
 
