@@ -92,14 +92,21 @@ table       = soup.findAll('table')
 page_table = []
 
 for row in table: 
+    
     # Compile various page data 
     links  = row.find_all('a')  # contains links, names, and event names
+    name   = row.find_all('th', {'class' : "oppcell"}) # find moneylines
     mline  = row.find_all('td', {'class' : "moneyline"}) # find moneylines
     move   = row.find_all('td', {'class' : "change-cell"}) # moneyline vol
     event  = row.find_all('tr', {'class' : "event-header item-mobile-only-row" }) # event dates
     
     # name, name link, open, closing range, movement, event name, event link, event date
     # Map with name, event date
+    
+    # determine how many rows total there should be 
+    # len(name)  --> number of rows 
+    
+    # get
     
     for data in event:
         print("------------------------")
