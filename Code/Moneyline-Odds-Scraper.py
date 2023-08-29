@@ -64,7 +64,6 @@ for link in fighter_list:
 for link in new_links:
     if link not in fighter_list:
         fighter_list.append(link)
-
             
 #%%
 # Export to excel
@@ -81,34 +80,41 @@ df_events.to_csv('C:/Users/wcarp/OneDrive/Desktop/MMA Bout  Model/Data/odds-even
 ex = 'https://www.bestfightodds.com/fighters/Israel-Adesanya-7845'
 ex = 'https://www.bestfightodds.com/fighters/Chris-Manuel-568'
 
+ex = 'https://www.bestfightodds.com/fighters/Zelim-Imadaev-8102'
+
 driver.get(ex)
 page_source = driver.page_source
 soup        = BeautifulSoup(page_source, 'lxml')
 events      = soup.find_all('a')
 table       = soup.findAll('table')
-
 # empty list
 # name, name link, open, closing range, movement, event name, event link, event date 
-
 page_table = []
 
 for row in table: 
+    # Compile various page data 
     links  = row.find_all('a')  # contains links, names, and event names
     mline  = row.find_all('td', {'class' : "moneyline"}) # find moneylines
-    move   = row.find_all('td', {'class' : "change-cell"})
-    event  = row.find_all('tr', {'class' : "event-header item-mobile-only-row" }) # need to strip out event date (important)
+    move   = row.find_all('td', {'class' : "change-cell"}) # moneyline vol
+    event  = row.find_all('tr', {'class' : "event-header item-mobile-only-row" }) # event dates
     
     # name, name link, open, closing range, movement, event name, event link, event date
     # Map with name, event date
     
     for data in event:
         print("------------------------")
-        print(data.text.strip())
-    
+        data = data.text.strip()
+        data = data.split()
+        date = data[-3] + " " + data[-2] + " " + data[-1]
+        print(date)
+
     for data in links:
         print("------------------------")
         print(str(data.get('href')))
         print(data.text.strip())
+        # event link
+        # name
+        # event link etc.
     
     for data in mline:
         print("------------------------")
@@ -126,7 +132,6 @@ for row in table:
 # get open, closing range, movement    
 # keep the future events...but probably not that useful 
 # fighter of focus is always first line 
-
 #%% 
 # References 
 # https://selenium-python.readthedocs.io/locating-elements.html
