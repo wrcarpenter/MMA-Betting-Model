@@ -75,12 +75,12 @@ df_events.to_csv('C:/Users/wcarp/OneDrive/Desktop/MMA Bout  Model/Data/odds-even
 
 #%%
 # Testing link 
-
 # https://www.bestfightodds.com/fighters/Wilson-Reis-710
 ex = 'https://www.bestfightodds.com/fighters/Israel-Adesanya-7845'
 ex = 'https://www.bestfightodds.com/fighters/Chris-Manuel-568'
-
 ex = 'https://www.bestfightodds.com/fighters/Zelim-Imadaev-8102'
+
+ex = 'https://www.bestfightodds.com/fighters/Ronda-Rousey-2741'
 
 driver.get(ex)
 page_source = driver.page_source
@@ -89,43 +89,27 @@ events      = soup.find_all('a')
 table       = soup.findAll('table')
 # empty list
 # name, name link, open, closing range, movement, event name, event link, event date 
+
 page_table = []
+
 
 for row in table: 
     
-    # Compile various page data 
-    links  = row.find_all('a')  # contains links, names, and event names
-    name   = row.find_all('th', {'class' : "oppcell"}) # find moneylines
-    mline  = row.find_all('td', {'class' : "moneyline"}) # find moneylines
-    move   = row.find_all('td', {'class' : "change-cell"}) # moneyline vol
+    # Compile various page data  
+    links  = row.find_all('a')                              # contains links, names, and event names
+    name   = row.find_all('th', {'class' : "oppcell"})      # find names
+    mline  = row.find_all('td', {'class' : "moneyline"})    # find moneylines
+    move   = row.find_all('td', {'class' : "change-cell"})  # moneyline vol
     event  = row.find_all('tr', {'class' : "event-header item-mobile-only-row" }) # event dates
-    
-    # name, name link, open, closing range, movement, event name, event link, event date
-    # Map with name, event date
-    
-    # determine how many rows total there should be 
-    # len(name)  --> number of rows 
-    
-    # get
-    
-    for data in event:
-        print("------------------------")
-        data = data.text.strip()
-        data = data.split()
-        date = data[-3] + " " + data[-2] + " " + data[-1]
-        print(date)
 
-    for data in links:
-        print("------------------------")
-        print(str(data.get('href')))
-        print(data.text.strip())
-        # event link
-        # name
-        # event link etc.
+    # and now you fill in each row 
     
-    for data in mline:
-        print("------------------------")
-        print(data.text.strip())
+    # name, link, event, date, event_link, open, close left, close right, movement % (if applicable)
+    print(len(links)) # there are double the amount of links 
+    print(len(name))
+    print(len(event))
+    print(len(mline)) # this will be difficult to implement 
+    
     
     for data in move:
         print("------------------------")
@@ -133,12 +117,33 @@ for row in table:
         mstring = mstring.replace("▲", '')
         mstring = mstring.replace('▼', '')
         print(mstring)
+    
+    # create a row
+    date_index = 0
+      
+    for i in range(0, len(name)):
+        
+        page_row =[]
+        
+        app_name    = name[i].text.strip()
+        app_event   = str(links[i*2].get('href'))
+        app_profile = str(links[i*2+1].get('href'))
+        
+        event_date =  event[date_index].text.strip()
+        event_date =  event_date.split()
+        event_date =  event_date[-3] + ' ' + event_date[-2] + ' ' + event_date[-1]
+        if i % 2 != 0: date_index += 1
+        
+        app = [app_name, app_event, app_profile, event_date]
+        page_row.extend(app)
 
-# for each row:
-# get the event name, link, date, fighter name, fighter link 
-# get open, closing range, movement    
-# keep the future events...but probably not that useful 
-# fighter of focus is always first line 
+        
+                
+        page_table.append(page_row)
+    
+
+page_data = pd.DataFrame(page_table)        
+
 #%% 
 # References 
 # https://selenium-python.readthedocs.io/locating-elements.html
