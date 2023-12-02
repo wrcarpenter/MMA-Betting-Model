@@ -25,15 +25,16 @@ from concurrent.futures import ThreadPoolExecutor
 import multiprocessing
 cores = multiprocessing.cpu_count()
 
+pd.set_option('display.max_rows', 500)
+
 #%%
 # Upload most recent working version of bout data 
-source = 'https://raw.githubusercontent.com/wrcarpenter/MMA-Handicapping-Model/main/Data/ufcBouts_v11.csv'  
+source = 'https://raw.githubusercontent.com/wrcarpenter/MMA-Handicapping-Model/main/Data/ufcBouts_v18.csv'  
 df      = pd.read_csv(source, header=0) 
 df_orig = df # preserve a copy in case
 del source
 
 #%%
-
 # Explore the dataset 
 print(df.columns)
 # Columns in dataset 
@@ -46,12 +47,14 @@ print("Total Fights Recorded: ", len(df))
 print("Number of Unique Fights: ", len(pd.unique(df['fight_link'])))
 
 #%%
-
 # Eliminate any missing DOB (can fill this in later)
-df = df[df['dob'] != "--"]  # drops missing birthdays from the data 
+df = df[df['dob'] != "--"]     # drops missing birthdays from the data
+df = df[df['height'] != "--"]  # drops missing height from data (~65 total ob currently)
 print(len(df) - len(df_orig))  # drops 865 obs currently
 
-# Sort dob
+#%%
+
+# Sort Date of Birth variable
 df['dob'] = df['dob'].replace(',', '', regex=True)  # replace commas
 df['dob'] = df['dob'].replace('--', '', regex=True)  # replace commas
 df['dob'] = pd.to_datetime(df['dob'], format="%m/%d/%Y")
@@ -67,7 +70,12 @@ df = df.sort_values(by=['fighter_profile', 'event_date'], ascending=True)
 # Define the upcoming fights to apply model to 
 df['upcoming'] = np.where(df['fighter_result'] == "-" ,1, 0)
 
- 
+# Define weights 
+# Define men's vs womens 
+# Define reach? 
+
+df['mens_bout'] = np.where(df['fight_type'].str.contains("Women"), 0, 1)
+
 #%%
 
 # Current age of fighter at date time (years)
@@ -86,10 +94,22 @@ df['wks_since_last_fight'] = df['wks_since_last_fight'] / np.timedelta64(1, 'W')
 # Years since first recorded fight 
 df['min_date']    = df.groupby(['fighter_profile'])['event_date'].transform('min')
 df['roster_time'] = (df['event_date'] - df['min_date']) / np.timedelta64(1, 'Y')
+
+# Defining stance
+df['stance_type'] = 0 # undefined
+df.loc[df['stance'] == "Orthodox", 'stance_type'] = 1
+df.loc[df['stance'] == "Southpaw", 'stance_type'] = 2
+df.loc[df['stance'] == "Switch", 'stance_type']   = 3
+
+# convert height to numerical 
+df['feet']   = df['height'].str.slice(start=0, stop=1, step=1)
+df['inches'] = df['height'].str.slice(start=2)
+df['inches'] = df['inches'].replace('"','', regex=True)
+df['height_inches']   = pd.to_numeric(df['feet'])*12 + pd.to_numeric(df['inches'])
+
  
 #%% 
- 
-# Result of last fight 
+# Result of last fight (if applicable) 
 # Need to breakdown the results by some kind of number pattern 
 # Main fight results (binary variable)
 df['win']        = df['fighter_result'].apply(lambda x: 1 if x == 'W' else 0)
@@ -108,10 +128,9 @@ df['ko_win']  = np.where(((df['ko'] == 1) & (df['win'] == 1 )), 1, 0)
 df['sub_win'] = np.where(((df['sub'] == 1) & (df['win'] == 1 )), 1, 0) 
 df['dec_win'] = np.where(((df['dec'] == 1) & (df['win'] == 1 )), 1, 0) 
 
-# Total number of wins so far on roster
-df['total_wins'] = df.groupby(['fighter_profile'])['win'].cumsum()-1
-# and then change all -1 to 0 
-
+# Total number of wins and losses so far on roster
+df['total_wins'] = df.groupby(['fighter_profile'])['win'].cumsum()
+df['total_losses'] = df.groupby(['fighter_profile'])['loss'].cumsum()
 
 # height,weight
 # result of last fight (define categorical variables, ko_loss, ko_win, etc. )
@@ -121,10 +140,11 @@ df['total_wins'] = df.groupby(['fighter_profile'])['win'].cumsum()-1
 # Issue here is that you are shifting up another fighters results to be the first observation!!!
 # df.groupby('object')['value'].shift()
 
+# define some kind of function here to run the same code for different shifts 
 # Should mark first fight, no previous data 
+
 df['prev_fight_result'] = 0 
 
-# Neither a 
 df['prev_fight_result'] = np.where(((df.groupby('fighter_profile')['win'].shift(1) == 0)&\
                                     (df.groupby('fighter_profile')['loss'].shift(1) == 0)),1,df['prev_fight_result'])
 # Loss and KO result
@@ -149,15 +169,17 @@ df['prev_fight_result'] = np.where((df.groupby('fighter_profile')['ko_win'].shif
 # dec_win  = 5
 # dec_loss = 4 
 # sub_loss = 3 
-# ko_loss = 2
-# other   = 1
-# first   = 0
+# ko_loss  = 2
+# other    = 1
+# first    = 0
 
 # "Browsing tools 
 browse_columns = ['name', 'fighter_result', 'event_date', 'method', 'win', 'loss', 'ko', 'sub', 'dec','ko_win', 'prev_fight_result','sub_win', 'dec_win']
+
+browse_columns = ['name', 'fighter_result', 'event_date', 'method']
 # Browser for de-bugging 
 df_browse = df[browse_columns]
-df_browse_sample = df.loc[df['name'] == 'Jon Jones', browse_columns]
+df_browse_sample = df.loc[df['reach'] == '--', browse_columns]
 
 # Very useful commands
 df.columns
@@ -180,58 +202,27 @@ df['drop'] = df.groupby(['fight_link'])['order'].cumsum()
 df = df[df['drop'] != 1]
 df = df.sort_values(by=['fight_link', 'order'], ascending=True)
 
-df['test'] = np.where(df['order'] == 1, 'one', 'zero')
+# df['test'] = np.where(df['order'] == 1, 'one', 'zero')
 
 # Mapping opponent variables to a given fight
 df['opp_age']    = np.where(df['order'] == 1, df['age'].shift(-1), df['age'].shift(1))
-df['opp_height'] = np.where(df['order'] == 1, df['height'].shift(-1), df['height'].shift(1))
-df['opp_reach'] = np.where(df['order'] == 1, df['reach'].shift(-1), df['reach'].shift(1))
-df['opp_stance'] = np.where(df['order'] == 1, df['stance'].shift(-1), df['stance'].shift(1))
+df['opp_reach']  = np.where(df['order'] == 1, df['reach'].shift(-1), df['reach'].shift(1))
+df['opp_height'] = np.where(df['order'] == 1, df['height_inches'].shift(-1), df['height_inches'].shift(1))
+df['opp_stance'] = np.where(df['order'] == 1, df['stance_type'].shift(-1), df['stance_type'].shift(1))
 
-
-
+# Clean up dataset
+df = df.drop(columns=['feet', 'inches'])
 
 df.to_excel('Downloads/ufcModel.xlsx')
 
-
-
-# Add columns for opponent stats
-# do the mapping by group 
-
-df['opp_age'] = 0 
-
-# "Browsing tools 
-browse_columns = ['name', 'fighter_result', 'event_date', 'order']
-# Browser for de-bugging 
-df_browse = df[browse_columns]
-
-
-
-# Need these variables 
-df['opp_age'] = '-' 
-opp_height['opp_height'] = '-'
-opp_reach
-opp_prev_fight
-opp_win_streak
-opp_total_wins
-etc
-
-
 #%%
-
 # Save down dataset 
 # df.to_csv('/content/drive/MyDrive/MMA Model/Data/ufcBouts_v6.csv')
 
-
 #%%
-
-
-
-
 # Create a unique model dataset 
 df_model = df.sample(frac=1).drop_duplicates(subset=['fight_link'])
-df = df.drop_duplicates(subset='fighter_profile')
-
+# df = df.drop_duplicates(subset='fighter_profile')
 print(df)
 # Explore the dataset 
 print(df_model.columns)
@@ -244,7 +235,7 @@ print("Total Fights Recorded: ", len(df_model))
 # Number of unique fights in the dataset 
 print("Number of Unique Fights: ", len(pd.unique(df['fight_link'])))
 
-df_model.to_excel('C:/Users/wcarp/OneDrive/Desktop/ufcBouts_v6.csv')
+df_model.to_csv('Downloads/model_data.csv')
 
 # Model dataset is then split into two parts (training and upcoming)
 
