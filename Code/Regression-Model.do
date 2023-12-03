@@ -1,12 +1,10 @@
 ////////////////////////////////////////////////////////////////////////////////
 
-// Will Carpenter 
-// Stata, long time no see my good friend ... let's goooo
+// Implementing Regressions for MMA Betting Model
+// William Carpenter 
 
 ////////////////////////////////////////////////////////////////////////////////
-
 // Import dataset 
-
 // import delimited "`folder'/`file'", clear stringcols(_all) varnames(1)
 
 // Run summaries, run tests on data validity 
@@ -17,10 +15,10 @@ clear all
 set more off 
 cls	
 
-import delimited "https://raw.githubusercontent.com/wrcarpenter/MMA-Handicapping-Model/main/Data/ufcBouts_model_v2.csv", varnames(1)
+import delimited "https://raw.githubusercontent.com/wrcarpenter/MMA-Handicapping-Model/main/Data/model_data.csv", varnames(1)
 
 // clean up variables 
-gen event_date_val = date(event_date, "YMD")
+gen event_date_val = date(event_date, "MDY")
 format event_date_val %td Mon-DD-YY
 
 gen event_year = year(event_date_val)
@@ -30,10 +28,12 @@ gen win_bout = win
 br event_date event_date_val
 
 local regressors ///
-/// add variables here 
+/// add variables here
 
-logit win_bout age opp_age prev_num_fights roster_time event_year if upcoming == 0
+// Logistic model
+logit win_bout age height_inches event_year prev_num_fights prev_fight_result opp_age opp_height if upcoming == 0
 
-predict pwin_bout if upcoming==1
+// Formulating predictions for upcoming matches
+predict pwin_bout if upcoming==1 
 
 
