@@ -22,7 +22,7 @@ Create a betting strategy that outperforms generic approaches (random chance, bo
 | Tapology  | [tapology.com](https://www.tapology.com/) | Comprehensive event and figter data across numerous MMA venues |
 | Best Fight Odds | [bestfightodds.com](https://www.bestfightodds.com/) | Historical odds for MMA events from a variety of sportsbook platforms |
 
-## Questions
+## Some Focus Questions
 A few main focus questions:
 * What are the main fighter characterics that influence win/lose probability?
 * How random are fight outcomes?
