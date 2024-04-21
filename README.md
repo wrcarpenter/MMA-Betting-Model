@@ -22,6 +22,13 @@ Create a betting strategy that outperforms generic approaches (random chance, bo
 | Tapology  | [tapology.com](https://www.tapology.com/) | Comprehensive event and figter data across numerous MMA venues |
 | Best Fight Odds | [bestfightodds.com](https://www.bestfightodds.com/) | Historical odds for MMA events from a variety of sportsbook platforms |
 
+## Data Collection
+Add code implementation here for data collection via UFC stats and BestFightOdds.
+
+## Preparing Data
+
+## Model Design
+
 ## Some Focus Questions
 A few main focus questions:
 * What are the main fighter characterics that influence win/lose probability?
