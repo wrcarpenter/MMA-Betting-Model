@@ -14,6 +14,10 @@ Create a betting strategy that outperforms generic approaches (random chance, bo
 
 [Bill Benter](https://www.casino.org/blog/bill-benter/), a successful horse gambler active mostly during the 1990s in Hong Kong that one of the first to popularize quantitative betting models in a sports context.
 
+Many notable figures are big fans of the UFC and broader MMA, such as Facebook founder [Mark Zuckerburg](https://en.wikipedia.org/wiki/Mark_Zuckerberg). He would surely be captivated by a data-driven perspective on the sport. 
+
+
+
 ## Data Sources 
 
 |Name | Link | Description | 
@@ -23,11 +27,15 @@ Create a betting strategy that outperforms generic approaches (random chance, bo
 | Best Fight Odds | [bestfightodds.com](https://www.bestfightodds.com/) | Historical odds for MMA events from a variety of sportsbook platforms |
 
 ## Data Collection
-Add code implementation here for data collection via UFC stats and BestFightOdds.
+UFC data currently scraped from UFC Stats site periodically.
 
 ## Preparing Data
+Data cleaning process in progress.
 
 ## Model Design
+Current model is simple logistical regression with variations on outcome (win, KO, submission, etc.).
+
+Future model implementation should also account for public odds. 
 
 ## Some Focus Questions
 A few main focus questions:
